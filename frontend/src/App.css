@@ -24,4 +24,27 @@ html, body, #root{
   margin-top: 10px;
   font-size: 18px;
   color: white;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+.left button:hover{
+  background-color: #cf4303;
+}
+/*Navbar*/
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+.navbar .logo img{
+  width: 150px;
+  height: 150px;
+}
+.navbar ul{
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin-right: 25px;
 }
