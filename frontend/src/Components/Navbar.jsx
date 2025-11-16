@@ -13,7 +13,7 @@ export default function Navbar() {
 
   return (
     <header className="bg-white shadow-md">
-      <nav className="flex items-center justify-between sm:p-4 p-1 md:p-[15px]">
+      <nav className="flex items-center justify-between sm:p-4 px-4 md:p-[15px]">
 
         {/* Logo */}
         <div className='logo'>
