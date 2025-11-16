@@ -4,20 +4,21 @@ import "../App.css"
 export default function Home() {
   return (
     <div>
-        <section className='flex justify-between p-5'>
-            <div className='left '>
-                <h1 className='text-[40px] font-bold mt-[15px] text-[#ff9560]'>Lorem ipsum dolor sit.</h1>
-                <p className='text-[#878787] text-[22px]'>
+        <section className='flex flex-col md:flex-row justify-between p-5 items-center gap-10'>
+            <div className='text-center md:text-left'>
+                <h1 className='text-[28px] md:text-[40px] font-bold mt-[15px] text-[#ff9560]'>Lorem ipsum dolor sit.</h1>
+                <p className='text-[#878787] text-[18px] md:text-[22px] w-[100%] md:w-[80%] mt-3'>
                    Lorem ipsum dolor sit amet, consectetur 
                    adipisicing elit. Culpa sed maiores asperiores quam. 
                    Odit, doloremque.
                 </p>
                 <button 
-                className='bg-[#ff9560] mt-1 text-[18px] text-white transition-all duration-300 border-none outline-none
-                hover:bg-[#cf4303] p-1 rounded-[10px]'>Lorem, ipsum dolor.</button>
+                className='bg-[#ff9560] mt-3 text-[16px] md:text-[18px] 
+              text-white transition-all duration-300 outline-none
+              hover:bg-[#cf4303] px-4 py-2 rounded-[10px]'>Lorem, ipsum dolor.</button>
             </div>
-            <div className='right'>
-                <img src={MoroccanTajine} alt="" width="350px" height="350px"/>
+            <div className='right flex justify-center'>
+                <img src={MoroccanTajine} alt="" className='w-[250px] h-[250px] md:w-[350px] md:h-[350px]'/>
             </div>
         </section>
         <div className="bg">
