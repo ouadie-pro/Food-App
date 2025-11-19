@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Logo from '../assets/logo.png'
+import { IoMenu } from "react-icons/io5";
+import { RiMenu4Line } from "react-icons/ri";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +27,7 @@ export default function Navbar() {
           {links.map((item, index) => (
             <li 
               key={index} 
-              className='text-[16px] md:text-[20px] p-1 md:p-[15px] transition-all duration-300 hover:bg-[#ff9560] rounded-[7px]'
+              className='text-[16px] md:text-[20px] p-1 md:p-[15px] transition-all duration-300 hover:bg-[#ff9560] rounded-[7px] '
             >
               <a 
                 href={item.path} 
@@ -41,16 +43,12 @@ export default function Navbar() {
         <div className="md:hidden">
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="text-[#ff5601] focus:outline-none"
+            className="text-[#ff5601] focus:outline-none sm:text-4xl text-2xl"
           >
             {isOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <RiMenu4Line />
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              <IoMenu />
             )}
           </button>
         </div>

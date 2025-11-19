@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { IoIosHeart } from "react-icons/io";
 export default function AllRecipes() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true); // حالة التحميل
@@ -48,7 +48,7 @@ export default function AllRecipes() {
           <div 
             key={index} 
             className='group bg-[#fff] rounded-[12px] shadow-lg transition-all duration-300 ease-out hover:translate-y-1
-            w-[300px] cursor-pointer hover:bg-[#ff9560] hover:text-white p-2'
+            w-[300px] cursor-pointer hover:bg-[#ff9560] hover:text-white p-2 relative'
           >
             <h4
             className='mb-[0.5rem] text-[#ff6347] group-hover:text-black'>{dat?.title}</h4>
@@ -58,6 +58,10 @@ export default function AllRecipes() {
                 : dat?.ingredients || "No ingredients"}
             </p>
             <small className='my-[0.2rem]'>{dat?.instructions || "No instructions"}</small>
+            <div
+            className='absolute top-1 right-1 flex gap-1 text-[24px] text-[#ff9560]'>
+                <IoIosHeart />
+            </div>
           </div>
         ))}
       </div>

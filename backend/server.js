@@ -8,7 +8,7 @@ const cors = require('cors');
 app.use(cors());
 app.use('/recipe',require('./Router/recipe'))
 
-
+app.use('/User',require('./Router/User'))
 
 app.listen(PORT,()=>{
     connectDB();
