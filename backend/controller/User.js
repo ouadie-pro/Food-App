@@ -21,4 +21,31 @@ const addUser = async(req,res)=>{
     return res.status(201).json({message:'User registered successfully',token,newUser})
 }
 
-module.exports = {addUser}
+const addUser1 = async(req,res)=>{
+    const {email , password } = req.body;
+    if(!email || !password){
+        res.status(400).json({message:"Eamil and password are require "})
+    }
+    let user = await User.findOne({email});
+    if(user && await bcyptjs.compare(password,user.password)){
+        let token = jwt.sign({email,id:user._id},process.env.SECRET_KEY,{expiresIn:'7h'})
+        return res.status(201).json({message:'User registered successfully',token,user})
+    }
+    else{
+        return res.status(201).json({message : 'invalide email or password'})
+    }
+}
+
+const getUser1 = async(req,res)=>{
+    const user = await User.findById(req.params.id)
+    if(!user){
+        return res.status(404).json({message: "User not found"})
+    }
+    res.status(202).json({user})
+}
+
+const deletUser = async(req,res)=>{
+    const user = await User.findByIdAndDelete(req.params.id)
+    res.json(user)
+}
+module.exports = {addUser, addUser1 , getUser1 , deletUser}
