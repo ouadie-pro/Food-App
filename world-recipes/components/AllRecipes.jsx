@@ -73,8 +73,8 @@ export default function AllRecipes() {
               hover:bg-[#ff9560] hover:text-white p-2 relative'
             >
               <img 
-                src={`/images/${dat?.coverImage}`} 
-                alt="" 
+                src={dat?.coverImage || '/placeholder.png'} 
+                alt={dat?.title} 
                 className='w-full h-40 object-cover rounded-[8px] mx-auto'
               />
 
