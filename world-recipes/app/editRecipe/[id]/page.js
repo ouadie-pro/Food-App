@@ -58,76 +58,87 @@ export default function EditRecipe() {
       router.push("/");
     } catch (error) {
       console.log(error.response?.data || error.message);
-      alert("Error uploading recipe");
+      alert("Error updating recipe");
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[80vh] bg-gray-50">
+    <div className="flex justify-center items-center min-h-[80vh] bg-gray-50 py-12 px-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white w-[90%] max-w-md shadow-xl rounded-2xl p-6 flex flex-col gap-4"
+        className="bg-white w-full max-w-lg shadow-card rounded-2xl p-8 flex flex-col gap-5"
       >
-        <h2 className="text-xl font-semibold text-center text-orange-600">
-          Edit Recipe
-        </h2>
+        <div className="text-center mb-2">
+          <h2 className="text-2xl font-bold text-gray-900">
+            Edit Recipe
+          </h2>
+          <p className="text-gray-500 text-sm mt-1">
+            Update your culinary creation
+          </p>
+        </div>
 
         <div className="flex flex-col">
-          <label className="text-sm text-gray-600 font-medium mb-1">Title</label>
+          <label className="text-sm text-gray-700 font-medium mb-2">Title</label>
           <input
             value={formData.title || ""}
             onChange={onHandleChange}
             type="text"
             name="title"
-            className="border border-orange-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-orange-primary transition-colors"
             placeholder="Recipe title"
+            required
           />
         </div>
 
         <div className="flex flex-col">
-          <label className="text-sm text-gray-600 font-medium mb-1">Ingredients</label>
+          <label className="text-sm text-gray-700 font-medium mb-2">Ingredients</label>
           <textarea
             value={formData.ingredients || ""}
             onChange={onHandleChange}
             name="ingredients"
-            className="border border-orange-300 rounded-lg px-3 py-2 h-20 resize-none focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="border border-gray-200 rounded-xl px-4 py-3 h-28 resize-none focus:outline-none focus:border-orange-primary transition-colors"
             placeholder="Separate ingredients with commas"
+            required
           ></textarea>
         </div>
 
         <div className="flex flex-col">
-          <label className="text-sm text-gray-600 font-medium mb-1">Instructions</label>
+          <label className="text-sm text-gray-700 font-medium mb-2">Instructions</label>
           <textarea
             value={formData.instructions || ""}
             onChange={onHandleChange}
             name="instructions"
-            className="border border-orange-300 rounded-lg px-3 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="border border-gray-200 rounded-xl px-4 py-3 h-32 resize-none focus:outline-none focus:border-orange-primary transition-colors"
             placeholder="Write preparation steps..."
+            required
           ></textarea>
         </div>
 
         <div className="flex flex-col">
-          <label className="text-sm text-gray-600 font-medium mb-1">Cover Image</label>
+          <label className="text-sm text-gray-700 font-medium mb-2">Cover Image</label>
           {formData.coverImage && typeof formData.coverImage === "string" && (
             <img
               src={`/images/${formData.coverImage}`}
               alt="Current cover"
-              className="h-32 mb-2 rounded"
+              className="h-32 w-full object-cover mb-3 rounded-xl"
             />
           )}
-          <input
-            onChange={onHandleChange}
-            type="file"
-            name="coverImage"
-            className="border border-orange-300 rounded-lg px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-400"
-          />
+          <div className="border-2 border-dashed border-gray-200 rounded-xl p-4 hover:border-orange-primary transition-colors cursor-pointer">
+            <input
+              onChange={onHandleChange}
+              type="file"
+              name="coverImage"
+              className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-orange-primary file:text-white hover:file:bg-orange-dark cursor-pointer"
+              accept="image/*"
+            />
+          </div>
         </div>
 
         <button
           type="submit"
-          className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg shadow-md transition cursor-pointer"
+          className="bg-orange-primary hover:bg-orange-dark text-white font-semibold py-3 rounded-xl shadow-button hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 mt-2 cursor-pointer"
         >
-          Edit Recipe
+          Update Recipe
         </button>
       </form>
     </div>

@@ -8,54 +8,60 @@ export default function Contact() {
     email: '',
     message: ''
   });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    setSubmitted(true);
+    setTimeout(() => {
+      setFormData({ name: '', email: '', message: '' });
+      setSubmitted(false);
+    }, 3000);
   };
 
   return (
-    <div className="min-h-[80vh] bg-[#fff3e6] flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full">
-        <h1 className="text-3xl font-bold text-[#ff5601] text-center mb-6">
-          Contact Us
-        </h1>
-        <p className="text-gray-600 text-center mb-8">
-          Have a question or feedback? We would love to hear from you!
-        </p>
+    <div className="min-h-[80vh] bg-gray-50 flex items-center justify-center p-4 sm:p-8">
+      <div className="bg-white rounded-2xl shadow-card w-full max-w-lg overflow-hidden">
+        <div className="bg-orange-primary px-6 py-5">
+          <h1 className="text-2xl font-bold text-white text-center">
+            Contact Us
+          </h1>
+          <p className="text-orange-100 text-sm text-center mt-1">
+            Have a question or feedback? We would love to hear from you!
+          </p>
+        </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="p-6 flex flex-col gap-5">
           <div className="flex flex-col">
-            <label className="text-sm text-gray-600 font-medium mb-1">Name</label>
+            <label className="text-sm text-gray-700 font-medium mb-2">Name</label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="border border-orange-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-orange-primary transition-colors"
               placeholder="Your name"
               required
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="text-sm text-gray-600 font-medium mb-1">Email</label>
+            <label className="text-sm text-gray-700 font-medium mb-2">Email</label>
             <input
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="border border-orange-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-orange-primary transition-colors"
               placeholder="your.email@example.com"
               required
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="text-sm text-gray-600 font-medium mb-1">Message</label>
+            <label className="text-sm text-gray-700 font-medium mb-2">Message</label>
             <textarea
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="border border-orange-300 rounded-lg px-3 py-2 h-32 resize-none focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="border border-gray-200 rounded-xl px-4 py-3 h-32 resize-none focus:outline-none focus:border-orange-primary transition-colors"
               placeholder="Write your message here..."
               required
             />
@@ -63,14 +69,16 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="bg-[#ff9560] hover:bg-[#ff5601] text-white font-semibold py-2 rounded-lg shadow-md transition cursor-pointer mt-4"
+            className="bg-orange-primary hover:bg-orange-dark text-white font-semibold py-3 rounded-xl shadow-button hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 mt-2 cursor-pointer"
           >
-            Send Message
+            {submitted ? 'Message Sent!' : 'Send Message'}
           </button>
         </form>
 
-        <div className="mt-8 text-center text-gray-500 text-sm">
-          <p>Or reach us at: contact@worldrecipes.com</p>
+        <div className="px-6 pb-6 text-center">
+          <p className="text-gray-500 text-sm">
+            Or reach us at: <span className="text-orange-primary font-medium">contact@worldrecipes.com</span>
+          </p>
         </div>
       </div>
     </div>

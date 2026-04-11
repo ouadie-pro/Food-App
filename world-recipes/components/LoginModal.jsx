@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MdAlternateEmail } from "react-icons/md";
-import { RiLockPasswordLine } from "react-icons/ri";
+import { FaEnvelope, FaLock } from "react-icons/fa";
 import axios from 'axios';
 
 export default function LoginModal({ onClose, onLogin }) {
@@ -32,60 +31,89 @@ export default function LoginModal({ onClose, onLogin }) {
   };
 
   return (
-    <div onClick={onClose} className='fixed inset-0 bg-black/50 bg-opacity-30 flex justify-center items-center z-50'>
-      <form 
+    <div onClick={onClose} className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 p-4">
+      <div 
         onClick={(e) => e.stopPropagation()}
-        onSubmit={handleSubmit}
-        className='md:w-[380px] md:h-[400px] sm:w-[300px] sm:h-[350px] w-[270px] h-[260px] shadow-2xl rounded-[20px] 
-        flex flex-col items-center md:gap-7 sm:gap-5 mx-auto bg-white'
+        className="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden animate-fade-in-up"
       >
-        <div className="bg-[#ff9560] w-full h-[60px] rounded-t-[20px] flex justify-center items-center">
-          <h1 className="text-xl text-white">Create Account</h1>
+        <div className="bg-orange-primary px-6 py-5">
+          <h1 className="text-xl font-bold text-white text-center">
+            {isSignUp ? 'Create Account' : 'Welcome Back'}
+          </h1>
+          <p className="text-orange-100 text-sm text-center mt-1">
+            {isSignUp ? 'Join our cooking community' : 'Log in to continue'}
+          </p>
         </div>
 
-        <div className='flex border-2 border-[#ff9560] gap-2 rounded-full items-center p-1'>
-          <div className='w-10 h-10 bg-[#ff9560] rounded-full text-white flex justify-center items-center'>
-            <MdAlternateEmail />
-          </div>
-          <input 
-            type="email" 
-            name='email'
-            className='focus:outline-none p-2'
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-          />
-        </div>
-
-        <div className='flex border-2 border-[#ff9560] gap-2 rounded-full items-center p-1'>
-          <div className='w-10 h-10 bg-[#ff9560] rounded-full text-white flex justify-center items-center'>
-            <RiLockPasswordLine />
-          </div>
-          <input 
-            type="password" 
-            className='focus:outline-none p-2'
-            name='password'
-            value={form.password}
-            onChange={(e) => setForm({ ...form, password: e.target.value })}
-          />
-        </div>
-
-        <button 
-          type="submit"
-          className="text-xl mt-4 border-2 border-orange-400 px-4 py-1 rounded-full bg-[#ff9560] text-white shadow-lg"
+        <form 
+          onSubmit={handleSubmit}
+          className="p-6 flex flex-col gap-5"
         >
-          {isSignUp ? "Sign Up" : "Log In"}
-        </button>
+          <div className="flex flex-col">
+            <label className="text-sm text-gray-700 font-medium mb-2">Email</label>
+            <div className="relative">
+              <FaEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <input 
+                type="email" 
+                name='email'
+                className="w-full border border-gray-200 rounded-xl pl-12 pr-4 py-3 focus:outline-none focus:border-orange-primary transition-colors"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                placeholder="your.email@example.com"
+                required
+              />
+            </div>
+          </div>
 
-        {success && <h5 className="text-green-500">{success}</h5>}
-        {error && <h5 className="text-red-500">{error}</h5>}
+          <div className="flex flex-col">
+            <label className="text-sm text-gray-700 font-medium mb-2">Password</label>
+            <div className="relative">
+              <FaLock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <input 
+                type="password" 
+                className="w-full border border-gray-200 rounded-xl pl-12 pr-4 py-3 focus:outline-none focus:border-orange-primary transition-colors"
+                name='password'
+                value={form.password}
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                placeholder="••••••••"
+                required
+              />
+            </div>
+          </div>
 
-        <p
-          className='font-bold cursor-pointer'
-          onClick={() => setIsSignUp(!isSignUp)}
-        >
-          {isSignUp ? "Already have an account?" : "Create an account?"}
-        </p>
-      </form>
+          {success && (
+            <p className="text-green-600 text-sm text-center bg-green-50 py-2 rounded-lg">
+              {success}
+            </p>
+          )}
+          {error && (
+            <p className="text-red-600 text-sm text-center bg-red-50 py-2 rounded-lg">
+              {error}
+            </p>
+          )}
+
+          <button 
+            type="submit"
+            className="bg-orange-primary hover:bg-orange-dark text-white font-semibold py-3 rounded-xl shadow-button hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 cursor-pointer mt-2"
+          >
+            {isSignUp ? 'Sign Up' : 'Log In'}
+          </button>
+
+          <p
+            className="text-center text-gray-600 text-sm cursor-pointer hover:text-orange-primary transition-colors"
+            onClick={() => {
+              setIsSignUp(!isSignUp);
+              setError('');
+              setSuccess('');
+            }}
+          >
+            {isSignUp ? 'Already have an account? ' : "Don't have an account? "}
+            <span className="font-semibold">
+              {isSignUp ? 'Log In' : 'Sign Up'}
+            </span>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
