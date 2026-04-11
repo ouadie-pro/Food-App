@@ -40,7 +40,7 @@ export default function MyRecipes() {
         className='p-[2rem] bg-[#fff3e6] min-h-[100vh]'>
           <h1
           className='text-2xl font-bold text-[#ff5601] pb-4'>
-            All Recipes
+            My Recipes
           </h1>
           {myrecipes.length === 0 ?  (<p>no recipes found </p>):(
             <div

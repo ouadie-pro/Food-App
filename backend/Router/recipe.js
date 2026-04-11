@@ -5,10 +5,10 @@ const path = require('path');
 const verifyToken = require('../Middleware/auth')
 const { addRecipe, getRecipes, getRecipe, deleteRecipe, editRecipe } = require('../controller/recipe');
 
-// إعداد Multer
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './Public/images'); // تأكد أن هذا المجلد موجود
+        cb(null, './Public/images'); 
     },
     filename: (req, file, cb) => {
         const uniqueName = Date.now() + '-' + file.originalname;
@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Routes
-Router.post('/', upload.single('coverImage'), verifyToken,addRecipe);
+Router.post('/', verifyToken, upload.single('coverImage'),addRecipe);
 Router.get('/', getRecipes);
 Router.get('/:id', getRecipe);
 Router.delete('/:id', deleteRecipe);

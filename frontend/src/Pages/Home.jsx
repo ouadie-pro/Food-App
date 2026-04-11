@@ -22,10 +22,10 @@ export default function Home() {
     <div>
         <section className='flex flex-col md:flex-row justify-between p-5 items-center gap-10'>
             <div className='text-center md:text-left'>
-                <h1 className='text-[28px] md:text-[40px] font-bold mt-[15px] text-[#ff9560]'>Lorem ipsum dolor sit.</h1>
+                <h1 className='text-[28px] md:text-[40px] font-bold mt-[15px] text-[#ff9560]'>Share Your Passion for Cooking</h1>
                 <p className='text-[#878787] text-[18px] md:text-[22px] w-[100%] md:w-[80%] mt-3'>
-                   Lorem ipsum dolor sit amet, consectetur 
-                   adipisicing elit. Culpa sed maiores asperiores quam. 
+                  Add your favorite recipes, discover new flavors,
+                  and connect with food lovers from all over the world.
                 </p>
                 <button 
                 onClick={addRecipies}

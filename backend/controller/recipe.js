@@ -18,7 +18,7 @@ const addRecipe = async(req,res)=>{
 
         return res.json(newRecipe);
     } catch(err) {
-        console.log(err)   // هنا تشوف الخطأ بالتفصيل
+        console.log(err) 
         return res.status(500).json({message: err.message})
     }
 }
