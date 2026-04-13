@@ -7,7 +7,7 @@ if (!cached) {
 }
 
 const connectDB = async () => {
-  if (cached.conn) {
+  if (cached.conn && cached.conn.readyState === 1) {
     return cached.conn;
   }
 

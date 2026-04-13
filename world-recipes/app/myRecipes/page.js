@@ -44,8 +44,8 @@ export default function MyRecipes() {
   };
 
   return (
-    <div className="p-6 sm:p-8 lg:p-12 bg-orange-bg min-h-[100vh]">
-      <h1 className="text-2xl sm:text-3xl font-bold text-orange-primary mb-8">
+      <div className="p-6 sm:p-8 lg:p-12 min-h-[100vh]" style={{backgroundColor: '#fff7ed'}}>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-8" style={{color: '#ea580c'}}>
         My Recipes
       </h1>
       
@@ -54,7 +54,8 @@ export default function MyRecipes() {
           <p className="text-gray-500 text-lg">No recipes found</p>
           <button
             onClick={() => router.push('/addRecipe')}
-            className="mt-4 bg-orange-primary hover:bg-orange-light text-white font-semibold px-6 py-2 rounded transition-colors"
+            className="mt-4 text-white font-semibold px-6 py-2 rounded transition-colors"
+            style={{backgroundColor: '#ea580c'}}
           >
             Create Your First Recipe
           </button>
