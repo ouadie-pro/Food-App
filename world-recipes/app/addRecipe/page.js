@@ -19,7 +19,13 @@ export default function AddRecipes() {
     }
   }, [router]);
 
-  if (loading) return null;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[80vh]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2" style={{borderColor: '#ea580c'}}></div>
+      </div>
+    );
+  }
 
   const onHandleChange = (e) => {
     let val =
@@ -36,9 +42,6 @@ export default function AddRecipes() {
     setSubmitting(true);
     
     const token = localStorage.getItem("token");
-    console.log("Token being sent:", token);
-    console.log("Token type:", typeof token);
-    console.log("Token is null?:", token === null);
     
     if (!token || token === 'null' || token === 'undefined') {
       alert("Please log in first");
@@ -78,19 +81,14 @@ export default function AddRecipes() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[80vh] bg-gray-50 py-12 px-4">
+    <div style={{backgroundColor: '#fff7ed'}} className="flex justify-center items-center min-h-[80vh] py-12 px-4">
       <form
         onSubmit={handleSubmit}
         className="bg-white w-full max-w-lg shadow-md rounded-2xl p-8 flex flex-col gap-5"
       >
-        <div className="text-center mb-2">
-          <h2 className="text-2xl font-bold text-gray-900">
-            Add New Recipe
-          </h2>
-          <p className="text-gray-500 text-sm mt-1">
-            Share your culinary creation with the world
-          </p>
-        </div>
+        <h2 className="text-2xl font-bold text-center mb-4" style={{color: '#ea580c'}}>
+          Add New Recipe
+        </h2>
 
         <div className="flex flex-col">
           <label className="text-sm text-gray-700 font-medium mb-2">Title</label>
@@ -98,7 +96,7 @@ export default function AddRecipes() {
             onChange={onHandleChange}
             type="text"
             name="title"
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-orange-primary"
+            className="border border-gray-300 rounded-lg px-4 py-2 outline-none"
             placeholder="Recipe title"
             required
           />
@@ -109,10 +107,10 @@ export default function AddRecipes() {
           <textarea
             onChange={onHandleChange}
             name="ingredients"
-            className="border border-gray-300 rounded-lg px-4 py-2 h-28 resize-none focus:outline-none focus:border-orange-primary"
+            className="border border-gray-300 rounded-lg px-4 py-2 h-28 resize-none outline-none"
             placeholder="Separate ingredients with commas"
             required
-          ></textarea>
+          />
         </div>
 
         <div className="flex flex-col">
@@ -120,29 +118,28 @@ export default function AddRecipes() {
           <textarea
             onChange={onHandleChange}
             name="instructions"
-            className="border border-gray-300 rounded-lg px-4 py-2 h-32 resize-none focus:outline-none focus:border-orange-primary"
+            className="border border-gray-300 rounded-lg px-4 py-2 h-32 resize-none outline-none"
             placeholder="Write preparation steps..."
             required
-          ></textarea>
+          />
         </div>
 
         <div className="flex flex-col">
           <label className="text-sm text-gray-700 font-medium mb-2">Cover Image</label>
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-orange-primary transition-colors cursor-pointer">
-            <input
-              onChange={onHandleChange}
-              type="file"
-              name="coverImage"
-              className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-orange-primary file:text-white hover:file:bg-orange-light"
-              accept="image/*"
-            />
-          </div>
+          <input
+            onChange={onHandleChange}
+            type="file"
+            name="coverImage"
+            className="border border-gray-300 rounded-lg px-4 py-2 text-sm text-gray-600"
+            accept="image/*"
+          />
         </div>
 
         <button
           type="submit"
           disabled={submitting}
-          className="bg-orange-primary hover:bg-orange-light disabled:bg-gray-400 text-white font-semibold py-3 rounded-lg transition-colors mt-2"
+          style={{backgroundColor: submitting ? '#9ca3af' : '#ea580c'}}
+          className="w-full text-white font-semibold py-3 rounded-lg mt-4"
         >
           {submitting ? "Saving..." : "Save Recipe"}
         </button>

@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --orange-primary: #ff5601;
-  --orange-light: #ff9560;
+  --orange-primary: #ea580c;
+  --orange-light: #f97316;
 }
 
 html {

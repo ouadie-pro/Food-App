@@ -3,13 +3,14 @@ module.exports = {
   content: [
     './app/**/*.{js,jsx}',
     './components/**/*.{js,jsx}',
+    './pages/**/*.{js,jsx}',
   ],
   theme: {
     extend: {
       colors: {
-        'orange-primary': '#ff5601',
-        'orange-light': '#ff9560',
-        'orange-bg': '#fff3e6',
+        'orange-primary': '#ea580c',
+        'orange-light': '#f97316',
+        'orange-bg': '#fff7ed',
       },
     },
   },
