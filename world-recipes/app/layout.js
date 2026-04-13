@@ -1,12 +1,5 @@
-import { Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
-
-const poppins = Poppins({ 
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
-});
 
 export const metadata = {
   title: "World Recipes",
@@ -15,12 +8,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={poppins.variable}>
-      <body className="font-sans min-h-screen flex flex-col">
+    <html lang="en">
+      <body>
         <Navbar />
-        <main className="flex-1">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );
