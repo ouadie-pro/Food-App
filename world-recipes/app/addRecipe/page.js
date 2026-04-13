@@ -81,56 +81,56 @@ export default function AddRecipes() {
   };
 
   return (
-    <div style={{backgroundColor: '#fff7ed'}} className="flex justify-center items-center min-h-[80vh] py-12 px-4">
+    <div style={{backgroundColor: '#fff7ed'}} className="flex justify-center items-center h-[80vh] bg-gray-50">
       <form
         onSubmit={handleSubmit}
-        className="bg-white w-full max-w-lg shadow-md rounded-2xl p-8 flex flex-col gap-5"
+        className="bg-white w-[90%] max-w-md shadow-xl rounded-2xl p-6 flex flex-col gap-4"
       >
-        <h2 className="text-2xl font-bold text-center mb-4" style={{color: '#ea580c'}}>
+        <h2 className="text-xl font-semibold text-center text-orange-600">
           Add New Recipe
         </h2>
 
         <div className="flex flex-col">
-          <label className="text-sm text-gray-700 font-medium mb-2">Title</label>
+          <label className="text-sm text-gray-600 font-medium mb-1">Title</label>
           <input
             onChange={onHandleChange}
             type="text"
             name="title"
-            className="border border-gray-300 rounded-lg px-4 py-2 outline-none"
+            className="border border-orange-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
             placeholder="Recipe title"
             required
           />
         </div>
 
         <div className="flex flex-col">
-          <label className="text-sm text-gray-700 font-medium mb-2">Ingredients</label>
+          <label className="text-sm text-gray-600 font-medium mb-1">Ingredients</label>
           <textarea
             onChange={onHandleChange}
             name="ingredients"
-            className="border border-gray-300 rounded-lg px-4 py-2 h-28 resize-none outline-none"
+            className="border border-orange-300 rounded-lg px-3 py-2 h-20 resize-none focus:outline-none focus:ring-2 focus:ring-orange-400"
             placeholder="Separate ingredients with commas"
             required
           />
         </div>
 
         <div className="flex flex-col">
-          <label className="text-sm text-gray-700 font-medium mb-2">Instructions</label>
+          <label className="text-sm text-gray-600 font-medium mb-1">Instructions</label>
           <textarea
             onChange={onHandleChange}
             name="instructions"
-            className="border border-gray-300 rounded-lg px-4 py-2 h-32 resize-none outline-none"
+            className="border border-orange-300 rounded-lg px-3 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-orange-400"
             placeholder="Write preparation steps..."
             required
           />
         </div>
 
         <div className="flex flex-col">
-          <label className="text-sm text-gray-700 font-medium mb-2">Cover Image</label>
+          <label className="text-sm text-gray-600 font-medium mb-1">Cover Image</label>
           <input
             onChange={onHandleChange}
             type="file"
             name="coverImage"
-            className="border border-gray-300 rounded-lg px-4 py-2 text-sm text-gray-600"
+            className="border border-orange-300 rounded-lg px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-400"
             accept="image/*"
           />
         </div>
@@ -139,7 +139,7 @@ export default function AddRecipes() {
           type="submit"
           disabled={submitting}
           style={{backgroundColor: submitting ? '#9ca3af' : '#ea580c'}}
-          className="w-full text-white font-semibold py-3 rounded-lg mt-4"
+          className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg shadow-md transition"
         >
           {submitting ? "Saving..." : "Save Recipe"}
         </button>
